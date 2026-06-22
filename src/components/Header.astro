@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/tik-logo.png';
+const cats = ['Island & Boat', 'Snorkeling', 'Nature & Wildlife', 'Adventure', 'Private & Sunset', 'Culture & Nightlife'];
+---
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Tour In Koh Samui home">
+      <Image src={logo} alt="Tour In Koh Samui" width={260} class="brand-logo" loading="eager" />
+    </a>
+    <nav class="nav-main nav-hide" aria-label="Primary">
+      <a href="/all-tours">Tours</a>
+      <a href="/#why">Why TIK</a>
+      <a href="/#reviews">Reviews</a>
+      <button class="nav-menu-link js-menu-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="menu-panel">Menu</button>
+    </nav>
+    <div class="nav-actions">
+      <button class="chip-btn" id="cur-btn" title="Change currency">฿ THB</button>
+      <a class="chip-btn nav-hide" href="https://tourinkohsamui.com/cart">Cart</a>
+      <button class="chip-btn icon-btn" id="search-btn" aria-label="Search tours"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+      <button class="chip-btn icon-btn menu-mobile js-menu-toggle" aria-label="Open menu" aria-haspopup="true" aria-expanded="false" aria-controls="menu-panel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    </div>
+  </div>
+  <div class="menu-panel" id="menu-panel" hidden>
+    <div class="wrap menu-grid">
+      <div>
+        <p class="menu-h">Browse collections</p>
+        <div class="menu-cats">
+          {cats.map((c) => <a class="menu-cat" href="/all-tours">{c}</a>)}
+          <a class="menu-cat" href="/all-tours">All tours</a>
+        </div>
+      </div>
+      <div>
+        <p class="menu-h">Quick links</p>
+        <div class="menu-links">
+          <a href="/">Home</a>
+          <a href="/all-tours">All tours</a>
+          <a href="/faq">FAQ</a>
+          <a href="/blog">Blog</a>
+          <a href="/#why">Why TIK</a>
+          <a href="https://tourinkohsamui.com/cart">Cart</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

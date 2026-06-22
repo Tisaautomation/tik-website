@@ -1,0 +1,262 @@
+[
+  {
+    "title": "About TourInKohSamui",
+    "items": [
+      {
+        "q": "What is TourInKohSamui?",
+        "a": "TourInKohSamui is a local travel agency offering tours, day trips, private transfers, and ferry tickets across Koh Samui and nearby islands.",
+        "aText": "TourInKohSamui is a local travel agency offering tours, day trips, private transfers, and ferry tickets across Koh Samui and nearby islands."
+      },
+      {
+        "q": "How do I contact TourInKohSamui?",
+        "a": "You can reach us via Live Chat or email, both available in the footer of every page. We respond fast, especially during office hours.",
+        "aText": "You can reach us via Live Chat or email, both available in the footer of every page. We respond fast, especially during office hours."
+      },
+      {
+        "q": "What languages does your team speak?",
+        "a": "Our staff communicates in English, Thai, and Spanish. We also use real-time translation technology that allows us to assist customers in almost any language, so don't hesitate to reach out regardless of where you're from.",
+        "aText": "Our staff communicates in English, Thai, and Spanish. We also use real-time translation technology that allows us to assist customers in almost any language, so don't hesitate to reach out regardless of where you're from."
+      },
+      {
+        "q": "Do you have an office in Koh Samui?",
+        "a": "Yes. Our local team operates directly on the island to ensure quality and real support for every guest, not a call centre somewhere else.",
+        "aText": "Yes. Our local team operates directly on the island to ensure quality and real support for every guest, not a call centre somewhere else."
+      }
+    ]
+  },
+  {
+    "title": "Booking & Reservations",
+    "items": [
+      {
+        "q": "How do I make a reservation?",
+        "a": "Head to kohsamui.tours, pick your excursion, select your date and number of participants, and follow the checkout steps. Your spot is secured the moment you complete the booking, and your Online Voucher will be sent by email once confirmed by the local operator.",
+        "aText": "Head to kohsamui.tours, pick your excursion, select your date and number of participants, and follow the checkout steps. Your spot is secured the moment you complete the booking, and your Online Voucher will be sent by email once confirmed by the local operator."
+      },
+      {
+        "q": "Will I get a booking confirmation straight away?",
+        "a": "Yes. The moment your booking goes through, an order confirmation lands in your inbox with all your tour details. Your pickup time arrives in a separate email, sent by the evening before your tour date at the latest. That email is your Official Online Voucher. No printing needed, just show it on your phone to your driver or guide.",
+        "aText": "Yes. The moment your booking goes through, an order confirmation lands in your inbox with all your tour details. Your pickup time arrives in a separate email, sent by the evening before your tour date at the latest. That email is your Official Online Voucher. No printing needed, just show it on your phone to your driver or guide."
+      },
+      {
+        "q": "How far in advance should I book?",
+        "a": "We recommend booking 2 to 5 days ahead, especially during high season when spots fill up fast. That said, most tours accept bookings until 9:30 PM the night before. Some private tours and ATV experiences can even accommodate same-day requests, reach out via Live Chat or email and we'll check availability for you.",
+        "aText": "We recommend booking 2 to 5 days ahead, especially during high season when spots fill up fast. That said, most tours accept bookings until 9:30 PM the night before. Some private tours and ATV experiences can even accommodate same-day requests, reach out via Live Chat or email and we'll check availability for you."
+      },
+      {
+        "q": "Can I book last-minute?",
+        "a": "Yes, depending on availability. For same-day bookings, contact our support team directly via Live Chat or email.",
+        "aText": "Yes, depending on availability. For same-day bookings, contact our support team directly via Live Chat or email."
+      },
+      {
+        "q": "Can I book a tour as a gift for someone else?",
+        "a": "Yes. Simply enter the recipient's details during checkout, name, email, and any relevant participant information. The Online Voucher will be sent to whichever email address you provide. If you'd like a personalised gift note included, mention it in the Comments field at checkout.",
+        "aText": "Yes. Simply enter the recipient's details during checkout, name, email, and any relevant participant information. The Online Voucher will be sent to whichever email address you provide. If you'd like a personalised gift note included, mention it in the Comments field at checkout."
+      },
+      {
+        "q": "Can I change my booking after payment?",
+        "a": "You can reschedule depending on tour availability. Contact our support team at least 48 hours in advance. Same-day changes are not covered under the free cancellation window.",
+        "aText": "You can reschedule depending on tour availability. Contact our support team at least 48 hours in advance. Same-day changes are not covered under the free cancellation window."
+      }
+    ]
+  },
+  {
+    "title": "Payments & Pricing",
+    "items": [
+      {
+        "q": "What payment options are available when booking?",
+        "a": "We offer several ways to pay so you can choose whatever works best for you. Online bookings accept Credit Card (via Stripe), PayPal, and Bank Transfer (Thai bank transfers currently). We are adding Wise, Revolut, PromptPay and Payoneer in 2026, along with cash payment points across the island to facilitate pre-payments on-island. Prefer to handle it in person? Many of our excursions let you lock in your spot today and pay in Thai Baht on the day of the tour, directly with the local operator, available for bookings under ฿8,000 THB. Just look for the payment method badge below the \"Add to Cart\" button on each tour page.",
+        "aText": "We offer several ways to pay so you can choose whatever works best for you. Online bookings accept Credit Card (via Stripe), PayPal, and Bank Transfer (Thai bank transfers currently). We are adding Wise, Revolut, PromptPay and Payoneer in 2026, along with cash payment points across the island to facilitate pre-payments on-island. Prefer to handle it in person? Many of our excursions let you lock in your spot today and pay in Thai Baht on the day of the tour, directly with the local operator, available for bookings under ฿8,000 THB. Just look for the payment method badge below the \"Add to Cart\" button on each tour page."
+      },
+      {
+        "q": "Do Full Moon Party tickets, ferries, and transfers require prepayment?",
+        "a": "Yes. Full Moon Party transfers, ferry tickets, and all products from our Transfers section must be paid in full at the time of booking. The \"Book Now, Pay Later\" option is not available for these products. Your Online Voucher is issued only after payment is confirmed, and it's required to board.",
+        "aText": "Yes. Full Moon Party transfers, ferry tickets, and all products from our Transfers section must be paid in full at the time of booking. The \"Book Now, Pay Later\" option is not available for these products. Your Online Voucher is issued only after payment is confirmed, and it's required to board."
+      },
+      {
+        "q": "Can I pay just a deposit to secure my booking?",
+        "a": "We don't offer partial deposits. However, many tours come with a \"Book Now, Pay Later\" option, meaning you reserve your spot today and settle the full amount in cash on the day of the tour. This is available for bookings under ฿8,000 THB, and we reserve the right to decline any booking at our discretion.",
+        "aText": "We don't offer partial deposits. However, many tours come with a \"Book Now, Pay Later\" option, meaning you reserve your spot today and settle the full amount in cash on the day of the tour. This is available for bookings under ฿8,000 THB, and we reserve the right to decline any booking at our discretion."
+      },
+      {
+        "q": "Are the prices per person or per group?",
+        "a": "It depends on the tour. Most excursions are priced per person. Private tours and boat charters typically show a per group or per boat base price for a set number of participants. Always check the pricing label on the product page before adding to cart.",
+        "aText": "It depends on the tour. Most excursions are priced per person. Private tours and boat charters typically show a per group or per boat base price for a set number of participants. Always check the pricing label on the product page before adding to cart."
+      },
+      {
+        "q": "Do you offer discounts for booking multiple tours?",
+        "a": "Yes. A few ways to save: Group tour discounts: Check our \"Group Tours\" section, many popular activities have dedicated group pricing. If you don't find one for your preferred tour, contact us on Live Chat and we'll try to arrange it. Best Price Guarantee: Found the same tour cheaper elsewhere? We'll match it and add an extra 7% on top. Note: doesn't apply to already discounted products, and price proof must be submitted at least 3 days before your tour date.",
+        "aText": "Yes. A few ways to save: Group tour discounts: Check our \"Group Tours\" section, many popular activities have dedicated group pricing. If you don't find one for your preferred tour, contact us on Live Chat and we'll try to arrange it. Best Price Guarantee: Found the same tour cheaper elsewhere? We'll match it and add an extra 7% on top. Note: doesn't apply to already discounted products, and price proof must be submitted at least 3 days before your tour date."
+      },
+      {
+        "q": "Can I pay in my own currency?",
+        "a": "Yes. Our system processes international payments, automatically converting to Thai Baht (THB) based on current exchange rates.",
+        "aText": "Yes. Our system processes international payments, automatically converting to Thai Baht (THB) based on current exchange rates."
+      }
+    ]
+  },
+  {
+    "title": "Tours & Services",
+    "items": [
+      {
+        "q": "What is the difference between Budget and VIP tours?",
+        "a": "The main difference comes down to comfort, boat type, and group size. Budget: Standard tour boats or larger speedboats, great value if you're comfortable sharing the experience with a bigger group. VIP: A more premium setup, higher-quality snorkelling gear, more attentive guides, and faster, more comfortable speedboats or luxury longtail boats. Fewer people, less waiting, better access to spots before the crowds arrive. VIP does not necessarily mean private.",
+        "aText": "The main difference comes down to comfort, boat type, and group size. Budget: Standard tour boats or larger speedboats, great value if you're comfortable sharing the experience with a bigger group. VIP: A more premium setup, higher-quality snorkelling gear, more attentive guides, and faster, more comfortable speedboats or luxury longtail boats. Fewer people, less waiting, better access to spots before the crowds arrive. VIP does not necessarily mean private."
+      },
+      {
+        "q": "How do I identify private tours on the website?",
+        "a": "Private tours are clearly marked, here's what to look for: The title: Tour names explicitly include the word \"Private\" (e.g., Private Island Tour, Private Speedboat Charter). Pricing: Instead of a per-person rate, private tours show a base price per group or per boat. Flexibility: Private tour descriptions highlight the option to choose your own start time and customise the itinerary.",
+        "aText": "Private tours are clearly marked, here's what to look for: The title: Tour names explicitly include the word \"Private\" (e.g., Private Island Tour, Private Speedboat Charter). Pricing: Instead of a per-person rate, private tours show a base price per group or per boat. Flexibility: Private tour descriptions highlight the option to choose your own start time and customise the itinerary."
+      },
+      {
+        "q": "Can the itinerary be changed on the day of the tour?",
+        "a": "Depends on the tour type. Private tours are highly flexible, talk to your guide or driver and shape the day around what interests you most. Group (join-in) tours follow a fixed schedule to keep things running smoothly for everyone. Minor adjustments may happen due to weather or traffic, but the core itinerary stays as listed. Important: keep an eye on your emails (check spam too) in case the tour provider needs to notify you of changes to pickup time, pickup location, or weather-related adjustments.",
+        "aText": "Depends on the tour type. Private tours are highly flexible, talk to your guide or driver and shape the day around what interests you most. Group (join-in) tours follow a fixed schedule to keep things running smoothly for everyone. Minor adjustments may happen due to weather or traffic, but the core itinerary stays as listed. Important: keep an eye on your emails (check spam too) in case the tour provider needs to notify you of changes to pickup time, pickup location, or weather-related adjustments."
+      },
+      {
+        "q": "Can I request a specific pickup time for my tour?",
+        "a": "For most group tours, pickup times are assigned by the local operator based on your location and the route. Your confirmed pickup time will arrive by email the evening before your tour. If you have a specific constraint, early flight, hotel checkout, medical appointment, mention it in the Comments field when booking and we'll flag it to the operator.",
+        "aText": "For most group tours, pickup times are assigned by the local operator based on your location and the route. Your confirmed pickup time will arrive by email the evening before your tour. If you have a specific constraint, early flight, hotel checkout, medical appointment, mention it in the Comments field when booking and we'll flag it to the operator."
+      },
+      {
+        "q": "Where do I find all the details about my specific tour?",
+        "a": "Everything is on the tour product page, organised into clear sections: Booking form: On desktop it's on the right side. On mobile, tap \"BOOK NOW\" to open it. What's Included / What to Expect: Found below the main images, covers the full itinerary, inclusions, and activities. Pickup & Meeting Point: Look for \"Return Process & More Information\". Cruise passengers have a dedicated section. More Information: What to bring, food, safety, pregnancy restrictions, and pickup specifics for that tour. Cancellation Policy: Every product page has a dedicated Cancellation section with refund rules and a direct cancellation button.",
+        "aText": "Everything is on the tour product page, organised into clear sections: Booking form: On desktop it's on the right side. On mobile, tap \"BOOK NOW\" to open it. What's Included / What to Expect: Found below the main images, covers the full itinerary, inclusions, and activities. Pickup & Meeting Point: Look for \"Return Process & More Information\". Cruise passengers have a dedicated section. More Information: What to bring, food, safety, pregnancy restrictions, and pickup specifics for that tour. Cancellation Policy: Every product page has a dedicated Cancellation section with refund rules and a direct cancellation button."
+      },
+      {
+        "q": "Do you offer private tours?",
+        "a": "Yes. We offer both private and shared tours for most destinations. Private tours can be customised to your schedule and group size.",
+        "aText": "Yes. We offer both private and shared tours for most destinations. Private tours can be customised to your schedule and group size."
+      },
+      {
+        "q": "Do you provide hotel pickup and drop-off?",
+        "a": "Most tours include hotel transfers. Pickup details are listed under each tour description.",
+        "aText": "Most tours include hotel transfers. Pickup details are listed under each tour description."
+      },
+      {
+        "q": "Can you accommodate special dietary requirements?",
+        "a": "Yes. We can cater to most dietary needs, vegetarian, vegan, gluten-free, and common food allergies. Mention your requirements in the Comments field during checkout so we can inform the caterers or restaurant in advance.",
+        "aText": "Yes. We can cater to most dietary needs, vegetarian, vegan, gluten-free, and common food allergies. Mention your requirements in the Comments field during checkout so we can inform the caterers or restaurant in advance."
+      },
+      {
+        "q": "What should I bring on my tour?",
+        "a": "Depends on the excursion, here's a quick guide: Boat trips: Swimwear, towel, reef-safe sunscreen, hat, sunglasses, and a waterproof bag. Island tours & temples: Clothing that covers shoulders and knees (mandatory for temples), comfortable walking shoes, and a camera. All tours: A small amount of cash in Thai Baht for snacks, souvenirs, or tips.",
+        "aText": "Depends on the excursion, here's a quick guide: Boat trips: Swimwear, towel, reef-safe sunscreen, hat, sunglasses, and a waterproof bag. Island tours & temples: Clothing that covers shoulders and knees (mandatory for temples), comfortable walking shoes, and a camera. All tours: A small amount of cash in Thai Baht for snacks, souvenirs, or tips."
+      },
+      {
+        "q": "Are your guides licensed and English-speaking?",
+        "a": "Yes. All guides are licensed by the Tourism Authority of Thailand (TAT) and communicate in English.",
+        "aText": "Yes. All guides are licensed by the Tourism Authority of Thailand (TAT) and communicate in English."
+      }
+    ]
+  },
+  {
+    "title": "Safety & Special Needs",
+    "items": [
+      {
+        "q": "What safety measures are in place during tours?",
+        "a": "Safety is non-negotiable for us. Every boat is equipped with life jackets for all passengers, and we exclusively work with licensed, experienced guides. Weather conditions are monitored constantly, if conditions are deemed unsafe, the trip is postponed or cancelled. All vehicles are regularly maintained and conditioned for a comfortable, secure journey.",
+        "aText": "Safety is non-negotiable for us. Every boat is equipped with life jackets for all passengers, and we exclusively work with licensed, experienced guides. Weather conditions are monitored constantly, if conditions are deemed unsafe, the trip is postponed or cancelled. All vehicles are regularly maintained and conditioned for a comfortable, secure journey."
+      },
+      {
+        "q": "Are participants covered by accident insurance?",
+        "a": "Yes. All participants are covered by accident insurance on every tour, a mandatory requirement under Thai law for licensed tour operators. Full names, gender, and passport numbers of all participants must be provided at the check-in counter. For certain tours, we require this before your tour date, if that applies, you'll see an Insurance field during the booking process. Fill it in for every participant without exception.",
+        "aText": "Yes. All participants are covered by accident insurance on every tour, a mandatory requirement under Thai law for licensed tour operators. Full names, gender, and passport numbers of all participants must be provided at the check-in counter. For certain tours, we require this before your tour date, if that applies, you'll see an Insurance field during the booking process. Fill it in for every participant without exception."
+      },
+      {
+        "q": "What happens if it rains on the day of my tour?",
+        "a": "A bit of rain is normal in Samui and usually not enough to cancel. Tours run as long as sea and road conditions are safe. If the Thai Navy or local authorities declare conditions dangerous, high waves, storms, the tour will be cancelled. In that case, you can choose to reschedule for another available date or receive a full refund on any prepaid amount.",
+        "aText": "A bit of rain is normal in Samui and usually not enough to cancel. Tours run as long as sea and road conditions are safe. If the Thai Navy or local authorities declare conditions dangerous, high waves, storms, the tour will be cancelled. In that case, you can choose to reschedule for another available date or receive a full refund on any prepaid amount."
+      },
+      {
+        "q": "Are park entrance fees included in the tour price?",
+        "a": "Not always. For tours visiting Angthong Marine Park, the entrance fee (300 THB adults / 150 THB children) is not included, it's a government fee paid directly to the park rangers in cash on the day. The same applies to Koh Tan and Koh Madsum. Always check the \"What's NOT Included\" section on the product page before booking.",
+        "aText": "Not always. For tours visiting Angthong Marine Park, the entrance fee (300 THB adults / 150 THB children) is not included, it's a government fee paid directly to the park rangers in cash on the day. The same applies to Koh Tan and Koh Madsum. Always check the \"What's NOT Included\" section on the product page before booking."
+      },
+      {
+        "q": "Is the tour suitable for infants, pregnant women, or elderly travelers?",
+        "a": "Infants: Most tours are family-friendly. Children under 4 typically join free of charge. Pregnant women: We do not recommend speedboat tours during pregnancy due to the rough, bumpy nature of the ride. Please check the tour description before booking. Elderly travelers: We recommend Sailing Boat or Large Boat options, significantly smoother and more stable than speedboats. When in doubt, contact us via Live Chat before booking.",
+        "aText": "Infants: Most tours are family-friendly. Children under 4 typically join free of charge. Pregnant women: We do not recommend speedboat tours during pregnancy due to the rough, bumpy nature of the ride. Please check the tour description before booking. Elderly travelers: We recommend Sailing Boat or Large Boat options, significantly smoother and more stable than speedboats. When in doubt, contact us via Live Chat before booking."
+      },
+      {
+        "q": "I'm staying in a private villa on a steep hill. Can you still pick me up?",
+        "a": "We cover most locations across the island. However, some villas sit on hills that standard minivans can't safely access. Keep an eye on your emails, the provider will contact you if they need to adjust the pickup location and will need your confirmation. Always write your hotel or residence name in the Comments field, and provide a valid email and WhatsApp number so drivers can reach you directly. In those cases, pickup will be arranged at the nearest accessible point, bottom of the hill, a 7/11, or a nearby resort entrance.",
+        "aText": "We cover most locations across the island. However, some villas sit on hills that standard minivans can't safely access. Keep an eye on your emails, the provider will contact you if they need to adjust the pickup location and will need your confirmation. Always write your hotel or residence name in the Comments field, and provide a valid email and WhatsApp number so drivers can reach you directly. In those cases, pickup will be arranged at the nearest accessible point, bottom of the hill, a 7/11, or a nearby resort entrance."
+      },
+      {
+        "q": "Do I need to bring my own snorkelling gear?",
+        "a": "No. Masks and snorkels are provided on all boat trips. You're welcome to bring your own for hygiene or comfort reasons. Fins are generally not provided to protect the coral reefs from accidental damage, though they can sometimes be rented at the pier.",
+        "aText": "No. Masks and snorkels are provided on all boat trips. You're welcome to bring your own for hygiene or comfort reasons. Fins are generally not provided to protect the coral reefs from accidental damage, though they can sometimes be rented at the pier."
+      },
+      {
+        "q": "Are the animal and elephant experiences ethical?",
+        "a": "We only work with operators who treat animals with respect. Elephant experiences on our platform focus on observation in a natural environment, no riding, no performances. Before booking any animal-related tour, read the \"What to Expect\" section carefully on the product page so you know exactly what the interaction involves.",
+        "aText": "We only work with operators who treat animals with respect. Elephant experiences on our platform focus on observation in a natural environment, no riding, no performances. Before booking any animal-related tour, read the \"What to Expect\" section carefully on the product page so you know exactly what the interaction involves."
+      }
+    ]
+  },
+  {
+    "title": "Cancellations & Refunds",
+    "items": [
+      {
+        "q": "What is your cancellation policy?",
+        "a": "We get it, plans change. Here's how it works: Free cancellation: Cancel at least 48 hours before your tour for a full refund. Late cancellation: 24 to 47 hours' notice means 50% refund eligibility. No refund: Under 24 hours' notice will not be considered and is charged in full. No-shows & late arrivals: If you miss the group at the meeting point, the full price applies. No exceptions. \"Book Now, Pay Later\" does not mean \"if I don't go, I don't pay\", Thai regulations will have a full report on no-show cases. Same-day changes: Any modifications on the day of the tour fall outside the free cancellation window. Bad weather: If Thai authorities or the Thai Navy cancel activities due to unsafe conditions, we'll offer a reschedule or refund on prepaid bookings. Illness: A medical certificate from a local Koh Samui entity, issued after your booking and before the tour starts, is required to process a refund for health-related cancellations. Important: Our official cutoff for changes is 11:59 PM (GMT+7), two days before your tour date.",
+        "aText": "We get it, plans change. Here's how it works: Free cancellation: Cancel at least 48 hours before your tour for a full refund. Late cancellation: 24 to 47 hours' notice means 50% refund eligibility. No refund: Under 24 hours' notice will not be considered and is charged in full. No-shows & late arrivals: If you miss the group at the meeting point, the full price applies. No exceptions. \"Book Now, Pay Later\" does not mean \"if I don't go, I don't pay\", Thai regulations will have a full report on no-show cases. Same-day changes: Any modifications on the day of the tour fall outside the free cancellation window. Bad weather: If Thai authorities or the Thai Navy cancel activities due to unsafe conditions, we'll offer a reschedule or refund on prepaid bookings. Illness: A medical certificate from a local Koh Samui entity, issued after your booking and before the tour starts, is required to process a refund for health-related cancellations. Important: Our official cutoff for changes is 11:59 PM (GMT+7), two days before your tour date."
+      },
+      {
+        "q": "How do I request a refund?",
+        "a": "Reply to your booking confirmation email or contact us via Live Chat. Our team will review your case and process the refund within 3, 5 business days.",
+        "aText": "Reply to your booking confirmation email or contact us via Live Chat. Our team will review your case and process the refund within 3, 5 business days."
+      }
+    ]
+  },
+  {
+    "title": "Full Moon Party, Common Questions",
+    "items": [
+      {
+        "q": "What is the cancellation policy for Full Moon Party bookings?",
+        "a": "Full Moon Party transfers follow a strict no-exceptions policy. If you need to cancel, do it before 11:59 PM (GMT+7) at least 2 days before the event date. Cancellations made less than 48 hours before departure will be charged in full. Once your booking is confirmed, changes to your timetable or pickup details cannot be accommodated for logistical reasons, please double-check everything before completing your purchase. Contact us on Live Chat if you need assistance.",
+        "aText": "Full Moon Party transfers follow a strict no-exceptions policy. If you need to cancel, do it before 11:59 PM (GMT+7) at least 2 days before the event date. Cancellations made less than 48 hours before departure will be charged in full. Once your booking is confirmed, changes to your timetable or pickup details cannot be accommodated for logistical reasons, please double-check everything before completing your purchase. Contact us on Live Chat if you need assistance."
+      },
+      {
+        "q": "How does the pickup and departure process work?",
+        "a": "Based on the timetable you selected at checkout, the local operator will pick you up directly at your mentioned location and transfer you to the departure pier. Keep in mind that over 30,000 people need pickups on these dates, everyone deserves to be collected on time. Be ready and waiting at your location at your assigned time. If you're late, the rest of the group waits. Please be considerate. At the pier, show your Online Voucher to the ticket counter. You'll receive your boat ticket there. Online payments are not accepted at the pier, sort everything in advance.",
+        "aText": "Based on the timetable you selected at checkout, the local operator will pick you up directly at your mentioned location and transfer you to the departure pier. Keep in mind that over 30,000 people need pickups on these dates, everyone deserves to be collected on time. Be ready and waiting at your location at your assigned time. If you're late, the rest of the group waits. Please be considerate. At the pier, show your Online Voucher to the ticket counter. You'll receive your boat ticket there. Online payments are not accepted at the pier, sort everything in advance."
+      },
+      {
+        "q": "What happens when I arrive on Koh Phangan?",
+        "a": "The boat crossing takes roughly 25 minutes. Once you land at the Koh Phangan pier, head straight to the official event ticket counter, clearly marked on the aerial map provided with your voucher. The entrance fee is 200 THB per person, paid in cash on the spot. It cannot be prepaid or included in your booking. From the counter, follow the marked path directly to the party beach.",
+        "aText": "The boat crossing takes roughly 25 minutes. Once you land at the Koh Phangan pier, head straight to the official event ticket counter, clearly marked on the aerial map provided with your voucher. The entrance fee is 200 THB per person, paid in cash on the spot. It cannot be prepaid or included in your booking. From the counter, follow the marked path directly to the party beach."
+      },
+      {
+        "q": "How does the return transfer work?",
+        "a": "Return boats run every hour from 1:00 AM through 5:00 AM, you choose when to leave on the night itself. No need to pre-select a return time. Simply show your boat ticket at the Koh Phangan pier at whichever hour suits you. You'll be taken back to the departure pier on Koh Samui, where your driver will already be waiting to drop you back to your accommodation. Dropoffs follow the same route logic as pickups, step by step until everyone is home.",
+        "aText": "Return boats run every hour from 1:00 AM through 5:00 AM, you choose when to leave on the night itself. No need to pre-select a return time. Simply show your boat ticket at the Koh Phangan pier at whichever hour suits you. You'll be taken back to the departure pier on Koh Samui, where your driver will already be waiting to drop you back to your accommodation. Dropoffs follow the same route logic as pickups, step by step until everyone is home."
+      },
+      {
+        "q": "What should I bring to the Full Moon Party?",
+        "a": "Travel light, you'll be on a boat and walking on a beach all night. Bring cash in Thai Baht (entrance fee, drinks, food), reef-safe mosquito repellent, comfortable shoes you don't mind getting wet or sandy, a small waterproof bag or pouch for your phone and valuables, and a light layer for the boat ride back in the early hours. Leave anything valuable or irreplaceable at your hotel.",
+        "aText": "Travel light, you'll be on a boat and walking on a beach all night. Bring cash in Thai Baht (entrance fee, drinks, food), reef-safe mosquito repellent, comfortable shoes you don't mind getting wet or sandy, a small waterproof bag or pouch for your phone and valuables, and a light layer for the boat ride back in the early hours. Leave anything valuable or irreplaceable at your hotel."
+      },
+      {
+        "q": "Is the Full Moon Party safe?",
+        "a": "Koh Phangan hosts this event every month and it's well organised at scale. Common sense applies: watch your drinks, stay with your group, keep your valuables secure, and know where your meeting point is for the return boat. The beach gets extremely crowded, agree on a specific landmark with your group before you split up. Phone signal can be unreliable with 30,000+ people on the same island.",
+        "aText": "Koh Phangan hosts this event every month and it's well organised at scale. Common sense applies: watch your drinks, stay with your group, keep your valuables secure, and know where your meeting point is for the return boat. The beach gets extremely crowded, agree on a specific landmark with your group before you split up. Phone signal can be unreliable with 30,000+ people on the same island."
+      },
+      {
+        "q": "Is there an age restriction for the Full Moon Party?",
+        "a": "The event is open to guests 18 and over. You will be asked to show valid photo ID, passport or government-issued ID, at the entrance. No exceptions are made on the night, regardless of who you booked through. If you're travelling with someone under 18, they will not be permitted entry to the party beach.",
+        "aText": "The event is open to guests 18 and over. You will be asked to show valid photo ID, passport or government-issued ID, at the entrance. No exceptions are made on the night, regardless of who you booked through. If you're travelling with someone under 18, they will not be permitted entry to the party beach."
+      },
+      {
+        "q": "What if I miss the last return boat at 5:00 AM?",
+        "a": "If you miss the last transfer, you'll need to arrange your own way back to Koh Samui independently. Local taxi boats are available at the pier but availability and pricing vary, it won't be cheap at that hour. Our strong advice: don't cut it close. Head to the pier before 5:00 AM and allow extra time to navigate the crowds. The walk back takes longer than you'd expect.",
+        "aText": "If you miss the last transfer, you'll need to arrange your own way back to Koh Samui independently. Local taxi boats are available at the pier but availability and pricing vary, it won't be cheap at that hour. Our strong advice: don't cut it close. Head to the pier before 5:00 AM and allow extra time to navigate the crowds. The walk back takes longer than you'd expect."
+      },
+      {
+        "q": "Can I bring my own alcohol or food to the party beach?",
+        "a": "Outside food and drinks are generally not permitted on the party beach. There are plenty of bars, food stalls, and vendors on site accepting cash, bring enough Thai Baht to cover your night comfortably. ATMs on Koh Phangan can have long queues on Full Moon night, withdraw cash before you leave Koh Samui.",
+        "aText": "Outside food and drinks are generally not permitted on the party beach. There are plenty of bars, food stalls, and vendors on site accepting cash, bring enough Thai Baht to cover your night comfortably. ATMs on Koh Phangan can have long queues on Full Moon night, withdraw cash before you leave Koh Samui."
+      }
+    ]
+  }
+]

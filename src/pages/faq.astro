@@ -1,0 +1,96 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import faq from '../data/faq.json';
+
+const allQ = faq.flatMap((s) => s.items);
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: allQ.map((i) => ({
+    '@type': 'Question',
+    name: i.q,
+    acceptedAnswer: { '@type': 'Answer', text: i.aText },
+  })),
+};
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tik-website-designer.vercel.app/' },
+    { '@type': 'ListItem', position: 2, name: 'FAQ', item: 'https://tik-website-designer.vercel.app/faq/' },
+  ],
+};
+---
+<Base
+  title="FAQ · Tour In Koh Samui · Bookings, Payments, Cancellations & Pickups"
+  description="Honest answers from a licensed local Koh Samui operator: payments, free cancellation, hotel pickup, Full Moon Party transfers, safety and insurance. Before you book, not after."
+>
+  <Header />
+  <main id="main">
+    <section class="page-hero">
+      <div class="wrap">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>FAQ</span></nav>
+        <p class="eyebrow">Good to know</p>
+        <h1>Frequently asked questions</h1>
+        <p class="lead">Honest answers from a local Koh Samui operator, before you book, not after. Search below or browse by topic.</p>
+        <div class="faq-search">
+          <input id="faqSearch" type="search" placeholder="Search questions: e.g. cancellation, pickup, payment" aria-label="Search frequently asked questions" autocomplete="off" />
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="wrap">
+        {faq.map((sec) => (
+          <div class="faq-block" data-faq-section>
+            <h2 class="faq-h2">{sec.title}</h2>
+            <div class="faq">
+              {sec.items.map((i) => (
+                <details data-faq-item open>
+                  <summary>{i.q}</summary>
+                  <p set:html={i.a.replace(/\n/g, '<br>')} />
+                </details>
+              ))}
+            </div>
+          </div>
+        ))}
+        <p class="faq-none" id="faqNone" hidden>No questions match that search. <button type="button" class="linkish" id="faqClear">Clear search</button></p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+
+  <script is:inline>
+    (function () {
+      function ready(fn) { document.readyState !== 'loading' ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+      ready(function () {
+        var input = document.getElementById('faqSearch');
+        var none = document.getElementById('faqNone');
+        var clear = document.getElementById('faqClear');
+        var sections = document.querySelectorAll('[data-faq-section]');
+        function run() {
+          var q = (input.value || '').toLowerCase().trim();
+          var total = 0;
+          sections.forEach(function (sec) {
+            var shown = 0;
+            sec.querySelectorAll('[data-faq-item]').forEach(function (it) {
+              var txt = it.textContent.toLowerCase();
+              var ok = !q || txt.indexOf(q) !== -1;
+              it.style.display = ok ? '' : 'none';
+              if (ok) { shown++; total++; }
+            });
+            sec.style.display = (q && shown === 0) ? 'none' : '';
+          });
+          if (none) none.hidden = !(q && total === 0);
+        }
+        if (input) input.addEventListener('input', run);
+        if (clear) clear.addEventListener('click', function () { input.value = ''; run(); input.focus(); });
+      });
+    })();
+  </script>
+</Base>

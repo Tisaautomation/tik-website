@@ -1,0 +1,57 @@
+---
+import '@fontsource-variable/fraunces';
+import '@fontsource-variable/hanken-grotesk';
+import '../styles/global.css';
+
+interface Props { title: string; description: string; }
+const { title, description } = Astro.props;
+const site = Astro.site?.toString() ?? 'https://tik-website-designer.vercel.app/';
+const canonical = new URL(Astro.url.pathname, site).toString();
+
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': 'TravelAgency',
+  name: 'Tour In Koh Samui',
+  url: site,
+  description: 'Local Koh Samui tour agency: boat trips, islands, adventures and ethical wildlife experiences booked direct with honest prices.',
+  areaServed: 'Koh Samui, Thailand',
+  sameAs: [
+    'https://www.facebook.com/tourinkohsamui',
+    'https://www.instagram.com/tourinkohsamui'
+  ]
+};
+const website = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Tour In Koh Samui',
+  url: site
+};
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#e7eaf0" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin />
+    <link rel="preconnect" href="https://tippsaxknexjelbnpryy.supabase.co" crossorigin />
+    <link rel="preconnect" href="https://open.er-api.com" />
+    <script type="application/ld+json" set:html={JSON.stringify(organization)} />
+    <script type="application/ld+json" set:html={JSON.stringify(website)} />
+  </head>
+  <body>
+    <slot />
+    <script src="/currency.js" defer></script>
+    <script src="/ui.js" defer></script>
+    <script src="/chat.js" defer></script>
+  </body>
+</html>

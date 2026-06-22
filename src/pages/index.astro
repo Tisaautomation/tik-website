@@ -1,0 +1,266 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import TourCard from '../components/TourCard.astro';
+import { Image } from 'astro:assets';
+import heroPalms from '../assets/hero-palms.jpg';
+import tours from '../data/tours.json';
+import reviews from '../data/reviews.json';
+
+// Real product photos, downloaded locally → optimized to WebP/AVIF by astro:assets.
+const files = import.meta.glob('../assets/tours/*.{jpg,png}', { eager: true, import: 'default' });
+const byTk = {};
+for (const p in files) { const m = p.match(/(TK\d+)\./); if (m) byTk[m[1]] = files[p]; }
+const heroImg = byTk['TK023'];
+
+const cats = [
+  { label: 'Island & Boat', tk: 'TK001' },
+  { label: 'Snorkeling', tk: 'TK027' },
+  { label: 'Nature & Wildlife', tk: 'TK046' },
+  { label: 'Adventure', tk: 'TK054' },
+  { label: 'Private & Sunset', tk: 'TK008' },
+  { label: 'Culture & Nightlife', tk: 'TK043' },
+];
+
+const faqs = [
+  { q: 'What are the best day trips from Koh Samui?', a: 'The most-loved day trips are Pig Island & Koh Tan snorkeling, Angthong Marine Park, the Koh Tao & Koh Nang Yuan snorkeling trip, and the Pink Dolphin tour in Khanom.' },
+  { q: 'Do tours include hotel pickup?', a: 'Yes, almost every tour includes round-trip hotel pickup and drop-off across Koh Samui, so you never have to arrange your own transfer.' },
+  { q: 'Can I cancel if my plans change?', a: 'Yes. Most tours offer free cancellation up to 24 hours before, and you can reserve now and pay later, and nothing is charged today.' },
+  { q: 'What can I do in Koh Samui in one day?', a: 'A speedboat island day trip (Pig Island or Angthong Marine Park) in the morning, then a sunset sailing cruise or a Muay Thai fight night in the evening.' },
+  { q: 'Are the elephant experiences ethical?', a: 'Yes, we only work with no-riding sanctuaries focused on feeding, care and observation in a natural setting.' },
+];
+
+const itemList = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Top Koh Samui tours',
+  itemListElement: tours.map((t, i) => ({
+    '@type': 'ListItem', position: i + 1, name: t.name, url: t.url,
+  })),
+};
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question', name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const check = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+const trust = ['Free cancellation up to 24h', 'Reserve now, pay later', 'English-speaking guides', 'Hotel pickup included', 'Direct local prices'];
+const why = [
+  { t: 'Born & based in Koh Samui', d: 'We live here. Every tour is one we would happily send our own friends on.' },
+  { t: 'Honest prices, zero hidden costs', d: 'Direct local rates with no surprise fees. What you see is exactly what you pay.' },
+  { t: 'Free cancellation & pay later', d: 'Plans change on holiday. Cancel free up to 24h and pay nothing today on most tours.' },
+  { t: 'Real humans on WhatsApp', d: 'Message a real local team and get fast, friendly answers before and during your trip.' },
+];
+---
+<Base
+  title="Tour In Koh Samui · Boat Trips, Islands & Adventures, Booked Direct (2026)"
+  description="The real Koh Samui by local experts. Hand-picked boat trips, island day tours, snorkeling and ethical wildlife. Honest prices, free cancellation and hotel pickup."
+>
+  <Header />
+
+  <main id="main">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Koh Samui · by local experts</p>
+        <h1>The real Koh Samui,<br /><span class="serif-accent">by the people who live it.</span></h1>
+        <p class="lead">Hand-picked boat trips, islands and adventures, booked direct with honest prices, free cancellation and hotel pickup. No middlemen, no hidden costs.</p>
+        <div class="search" role="search">
+          <div class="kw-wrap">
+            <svg class="kw-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input id="kw-search" class="kw-search" type="search" placeholder="Search tours: e.g. Pig Island, Angthong, snorkeling…" aria-label="Search tours by keyword" />
+          </div>
+          <div class="search-controls">
+          <div class="nsel" data-name="experience">
+            <span class="nsel-label">Experience</span>
+            <button type="button" class="nsel-btn" aria-haspopup="listbox" aria-expanded="false">
+              <span class="nsel-val">All experiences</span>
+              <svg class="nsel-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <ul class="nsel-list" role="listbox" hidden>
+              <li role="option" data-val="all" aria-selected="true">All experiences</li>
+              <li role="option" data-val="Island & Boat">Island &amp; boat trips</li>
+              <li role="option" data-val="Snorkeling">Snorkeling</li>
+              <li role="option" data-val="Nature & Wildlife">Nature &amp; wildlife</li>
+              <li role="option" data-val="Adventure">Adventure</li>
+              <li role="option" data-val="Private & Sunset">Private &amp; sunset</li>
+              <li role="option" data-val="Culture & Nightlife">Culture &amp; nightlife</li>
+            </ul>
+          </div>
+          <div class="nsel" data-name="when">
+            <span class="nsel-label">When</span>
+            <button type="button" class="nsel-btn" aria-haspopup="listbox" aria-expanded="false">
+              <span class="nsel-val">Anytime</span>
+              <svg class="nsel-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <ul class="nsel-list" role="listbox" hidden>
+              <li role="option" data-val="Anytime" aria-selected="true">Anytime</li>
+              <li role="option" data-val="Today">Today</li>
+              <li role="option" data-val="Tomorrow">Tomorrow</li>
+              <li role="option" data-val="This week">This week</li>
+            </ul>
+          </div>
+          <button type="button" class="btn btn-primary" id="find-btn">Find my tour</button>
+          </div>
+        </div>
+        <div class="hero-trust">
+          <span>★ 4.9 Google reviews</span>
+          <span>Free cancellation</span>
+          <span>Hotel pickup included</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF: rating → photo → review comments -->
+  <section id="reviews" class="proof">
+    <div class="wrap">
+      <div class="proof-hero">
+        <div class="proof-photo">
+          <Image src={heroPalms} alt="Palm trees against a bright turquoise Koh Samui sky" widths={[800, 1200, 1600]} sizes="(max-width: 700px) 94vw, 1180px" loading="eager" fetchpriority="high" decoding="async" />
+          <div class="proof-overlay"><p class="proof-tagline">Paradise, planned by locals.</p></div>
+        </div>
+        <div class="rating-bar">
+          <span class="rating-bar__label">Trusted on Google &amp; GetYourGuide</span>
+          <div class="rating-bar__chips">
+            <a class="rbchip" href="https://g.page/r/Cc5apeTRAwypEBM/review" target="_blank" rel="noopener" aria-label="Google 4.9 stars, read our reviews">
+              <svg class="rbchip__g" viewBox="0 0 272 92" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="#EA4335" d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/><path fill="#FBBC05" d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/><path fill="#4285F4" d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z"/><path fill="#34A853" d="M225 3v65h-9.5V3h9.5z"/><path fill="#EA4335" d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z"/><path fill="#4285F4" d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z"/></svg>
+              <span class="rbchip__rating">4.9<span class="rbchip__star" aria-hidden="true">★</span></span>
+            </a>
+            <a class="rbchip" href="https://www.getyourguide.com/tik-tourinkohsamui-s733825/" target="_blank" rel="noopener" aria-label="getyourguide 4.6 stars, read our reviews">
+              <span class="rbchip__gyg">getyourguide</span>
+              <span class="rbchip__rating">4.6<span class="rbchip__star" aria-hidden="true">★</span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="grid-reviews">
+        {reviews.map((r) => (
+          <figure class="review">
+            <div class="stars">{'★'.repeat(r.rating)}</div>
+            <p>“{r.text}”</p>
+            <figcaption class="who">{r.name}<small>{[r.country, r.source].filter(Boolean).join(' · ')}</small></figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="wrap">
+      {trust.map((t) => (
+        <span class="trust-pill"><span set:html={check} />{t}</span>
+      ))}
+    </div>
+  </div>
+
+  <!-- TOURS -->
+  <section id="tours">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Most loved</p>
+        <h2>Tours travellers book again and again</h2>
+        <p class="lead">Real experiences run by trusted local operators, the ones our guests rate five stars.</p>
+      </div>
+      <div class="grid-tours">
+        {tours.map((tour) => <TourCard tour={tour} image={byTk[tour.tk]} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Find your vibe</p>
+        <h2>Browse by experience</h2>
+      </div>
+      <div class="cats">
+        {cats.map((c) => (
+          <a class="cat-tile" href="#tours" data-filter={c.label}>
+            <Image src={byTk[c.tk]} alt={c.label + ' tours in Koh Samui'} width={520} loading="lazy" decoding="async" />
+            <span>{c.label}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="why">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Why TIK</p>
+        <h2>Local experts, world-class standards</h2>
+      </div>
+      <div class="why-grid">
+        {why.map((w) => (
+          <div class="why-card">
+            <div class="ic"><span set:html={check} /></div>
+            <h3>{w.t}</h3>
+            <p>{w.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Good to know</p>
+        <h2>Frequently asked</h2>
+      </div>
+      <div class="faq">
+        {faqs.map((f) => (
+          <div class="faq-item">
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </div>
+        ))}
+      </div>
+      <a class="btn btn-primary faq-more" href="https://tourinkohsamui.com/pages/faq">See all FAQs</a>
+    </div>
+  </section>
+
+  </main>
+
+  <Footer />
+
+  <script type="application/ld+json" set:html={JSON.stringify(itemList)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+
+  <script is:inline>
+    // Reviews row: show ONLY the cards that fit the viewport on a single line; hide the rest.
+    (function () {
+      function fit() {
+        var row = document.querySelector('.grid-reviews');
+        if (!row) return;
+        var cards = [].slice.call(row.children);
+        cards.forEach(function (c) { c.style.display = ''; });
+        row.style.justifyContent = 'flex-start';
+        var avail = row.clientWidth;
+        var cs = getComputedStyle(row);
+        var gap = parseFloat(cs.columnGap || cs.gap) || 0;
+        var used = 0, shown = 0;
+        cards.forEach(function (c) {
+          var w = c.getBoundingClientRect().width;
+          var need = used + (shown > 0 ? gap : 0) + w;
+          if (need <= avail + 1) { used = need; shown++; }
+          else { c.style.display = 'none'; }
+        });
+        row.style.justifyContent = 'center';
+      }
+      function ready(fn) { document.readyState !== 'loading' ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+      ready(function () { fit(); var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(fit, 150); }); });
+    })();
+  </script>
+</Base>

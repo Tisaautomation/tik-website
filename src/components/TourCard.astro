@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets';
+const { tour, image } = Astro.props;
+const priceFmt = tour.price.toLocaleString('en-US');
+---
+<article class="card" data-cat={tour.cat}>
+  <div class="ph">
+    <Image src={image} alt={tour.alt} width={640} loading="lazy" decoding="async" />
+    <span class="cat">{tour.cat}</span>
+  </div>
+  <div class="body">
+    <h3>{tour.name}</h3>
+    <p class="blurb">{tour.blurb}</p>
+    <div class="foot">
+      <div class="price">
+        <small>From</small>
+        <span class="price-amount" data-thb={tour.price}>฿{priceFmt}</span>
+      </div>
+      <a class="btn btn-ghost" href={tour.url} aria-label={`Check availability for ${tour.name}`}>Check availability</a>
+    </div>
+  </div>
+</article>
