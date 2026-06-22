@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import logo from '../assets/tik-logo.png';
 import compass from '../assets/tik-compass.png';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 <footer class="site-footer" id="site-footer">
   <div class="wrap">
@@ -18,18 +19,18 @@ import compass from '../assets/tik-compass.png';
       </div>
       <nav class="footer-col" aria-label="Explore">
         <h3>Explore</h3>
-        <a href="/all-tours">All tours</a>
-        <a href="/#reviews">Reviews</a>
-        <a href="/#why">Why TIK</a>
-        <a href="/faq">FAQ</a>
-        <a href="/blog">Blog</a>
+        <a href={`${base}all-tours/`}>All tours</a>
+        <a href={`${base}#reviews`}>Reviews</a>
+        <a href={`${base}#why`}>Why TIK</a>
+        <a href={`${base}faq/`}>FAQ</a>
+        <a href={`${base}blog/`}>Blog</a>
       </nav>
       <nav class="footer-col" aria-label="Company">
         <h3>Company</h3>
-        <a href="/#why">About us</a>
-        <a href="/blog">Explore Koh Samui</a>
+        <a href={`${base}#why`}>About us</a>
+        <a href={`${base}blog/`}>Explore Koh Samui</a>
         <a href="mailto:info@tourinkohsamui.com">Contact</a>
-        <a href="/privacy">Privacy Policy</a>
+        <a href={`${base}privacy/`}>Privacy Policy</a>
       </nav>
       <div class="footer-col">
         <h3>Get in touch</h3>
@@ -42,7 +43,7 @@ import compass from '../assets/tik-compass.png';
     </div>
     <div class="footer-bottom">
       <span class="footer-compass"><Image src={compass} alt="" width={120} loading="lazy" /> Tour In Koh Samui</span>
-      <p class="footer-legal">© 2026 Tour In Koh Samui. All rights reserved. · <a href="/privacy">Privacy</a></p>
+      <p class="footer-legal">© 2026 Tour In Koh Samui. All rights reserved. · <a href={`${base}privacy/`}>Privacy</a></p>
     </div>
   </div>
 </footer>

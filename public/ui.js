@@ -53,7 +53,7 @@
     if (kw) kw.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); applySearch(kw.value); } });
     if (findBtn) findBtn.addEventListener('click', function () { applySearch(kw ? kw.value : ''); });
     if (searchBtn) searchBtn.addEventListener('click', function () {
-      if (!kw) { window.location.href = '/all-tours'; return; }
+      if (!kw) { window.location.href = (window.TIK_BASE || '/') + 'all-tours/'; return; }
       window.scrollTo({ top: 0, behavior: 'smooth' });
       setTimeout(function () { kw.focus(); }, 350);
     });

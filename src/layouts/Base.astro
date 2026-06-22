@@ -7,6 +7,7 @@ interface Props { title: string; description: string; }
 const { title, description } = Astro.props;
 const site = Astro.site?.toString() ?? 'https://tik-website-designer.vercel.app/';
 const canonical = new URL(Astro.url.pathname, site).toString();
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
 const organization = {
   '@context': 'https://schema.org',
@@ -32,7 +33,7 @@ const website = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/png" href={`${base}favicon.png`} />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -50,8 +51,9 @@ const website = {
   </head>
   <body>
     <slot />
-    <script src="/currency.js" defer></script>
-    <script src="/ui.js" defer></script>
-    <script src="/chat.js" defer></script>
+    <script is:inline set:html={`window.TIK_BASE=${JSON.stringify(base)}`}></script>
+    <script src={`${base}currency.js`} defer></script>
+    <script src={`${base}ui.js`} defer></script>
+    <script src={`${base}chat.js`} defer></script>
   </body>
 </html>
