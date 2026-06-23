@@ -106,8 +106,11 @@
           closeAllSel();
           var name = sel.getAttribute('data-name');
           var v = li.getAttribute('data-val');
-          if (name === 'experience') { state.cat = v; applyAndGo(); }
-          else if (name === 'when') { state.when = v; applyAndGo(); }
+          // Hero search: dropdowns ONLY set the selection. The search runs when the
+          // user presses "Find my tour" (or Enter) — like the current Shopify search,
+          // so they can pick Experience AND When before anything moves.
+          if (name === 'experience') { state.cat = v; }
+          else if (name === 'when') { state.when = v; }
         });
       });
     });
