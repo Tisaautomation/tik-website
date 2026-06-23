@@ -1,0 +1,4 @@
+{
+  "_note": "Snapshot of real availability from Supabase tour_blocks (project tippsaxknexjelbnpryy). 'days' = JS getDay() values the tour RUNS (0=Sun..6=Sat), computed as the UNION across providers (a day is available if at least one active provider covers it). 'blockedDom' = days-of-month the tour is blocked. Tours NOT listed here run any day. Refresh by re-querying tour_blocks where is_active and block_type in ('always','recurring'); recompute union and re-bake. Static snapshot because the GitHub Pages build has no Supabase creds.",
+  "TK008": { "days": [0, 5], "blockedDom": [19, 24] }
+}

@@ -1,9 +1,11 @@
 ---
 import { Picture } from 'astro:assets';
+import avail from '../data/tour-availability.json';
 const { tour, image } = Astro.props;
 const priceFmt = tour.price.toLocaleString('en-US');
+const av = avail[tour.tk] || {};
 ---
-<article class="card" data-cat={tour.cat}>
+<article class="card" data-cat={tour.cat} data-days={av.days ? av.days.join(',') : undefined} data-blockdom={av.blockedDom ? av.blockedDom.join(',') : undefined}>
   <div class="ph">
     <Picture src={image} alt={tour.alt} formats={['avif', 'webp']} widths={[260, 360, 480, 640]} sizes="(max-width: 560px) 90vw, (max-width: 920px) 45vw, 360px" loading="lazy" decoding="async" />
     <span class="cat">{tour.cat}</span>

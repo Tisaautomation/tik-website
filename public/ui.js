@@ -1,4 +1,7 @@
-/* Header menu (desktop "Menu" link + mobile hamburger) + collection filter + keyword search + neomorphic dropdowns. */
+/* Header menu (desktop "Menu" + mobile hamburger) + UNIFIED filter (category + when + keyword)
+   + neomorphic dropdowns. The "When" filter respects real tour availability:
+   each card may carry data-days (JS getDay() values the tour runs) and data-blockdom
+   (days-of-month blocked), baked from Supabase tour_blocks. No data-days = runs any day. */
 (function () {
   function ready(fn) {
     if (document.readyState !== 'loading') fn();
@@ -13,52 +16,73 @@
       toggles.forEach(function (t) { t.setAttribute('aria-expanded', String(open)); });
     }
     toggles.forEach(function (t) {
-      t.addEventListener('click', function (e) {
-        e.stopPropagation();
-        setPanel(panel && panel.hasAttribute('hidden'));
-      });
+      t.addEventListener('click', function (e) { e.stopPropagation(); setPanel(panel && panel.hasAttribute('hidden')); });
     });
 
-    var tours = document.getElementById('tours');
-    function goTours() { if (tours) tours.scrollIntoView({ behavior: 'smooth' }); }
+    var toursEl = document.getElementById('tours');
+    function goTours() { if (toursEl) toursEl.scrollIntoView({ behavior: 'smooth' }); }
 
-    function applyFilter(f) {
-      document.querySelectorAll('.card[data-cat]').forEach(function (c) {
-        c.style.display = (f === 'all' || c.getAttribute('data-cat') === f) ? '' : 'none';
-      });
-      setPanel(false); goTours();
-    }
-    function applySearch(kw) {
-      kw = (kw || '').trim().toLowerCase();
-      document.querySelectorAll('.card[data-cat]').forEach(function (c) {
-        c.style.display = (!kw || c.textContent.toLowerCase().indexOf(kw) !== -1) ? '' : 'none';
-      });
-      setPanel(false); goTours();
-    }
+    // ---------- unified filter ----------
+    var state = { cat: 'all', when: 'Anytime', kw: '' };
+    var cards = [].slice.call(document.querySelectorAll('.card[data-cat]'));
 
+    function nums(s) { return (s || '').split(',').map(function (x) { return parseInt(x, 10); }).filter(function (x) { return !isNaN(x); }); }
+    function dateOk(card, d) {
+      var days = card.getAttribute('data-days');
+      var dom = card.getAttribute('data-blockdom');
+      var dayOk = !days || nums(days).indexOf(d.getDay()) !== -1;
+      var domOk = !dom || nums(dom).indexOf(d.getDate()) === -1;
+      return dayOk && domOk;
+    }
+    function whenOk(card) {
+      if (state.when === 'Anytime') return true;
+      var now = new Date(); now.setHours(0, 0, 0, 0);
+      function plus(n) { var x = new Date(now); x.setDate(x.getDate() + n); return x; }
+      if (state.when === 'Today') return dateOk(card, now);
+      if (state.when === 'Tomorrow') return dateOk(card, plus(1));
+      if (state.when === 'This week') { for (var i = 0; i < 7; i++) { if (dateOk(card, plus(i))) return true; } return false; }
+      return true;
+    }
+    function applyFilters() {
+      var kw = state.kw.trim().toLowerCase();
+      var any = false;
+      cards.forEach(function (c) {
+        var ok = (state.cat === 'all' || c.getAttribute('data-cat') === state.cat)
+              && (!kw || c.textContent.toLowerCase().indexOf(kw) !== -1)
+              && whenOk(c);
+        c.style.display = ok ? '' : 'none';
+        if (ok) any = true;
+      });
+      var note = document.querySelector('.no-match'); if (note) note.hidden = any;
+      return any;
+    }
+    function applyAndGo() { applyFilters(); setPanel(false); goTours(); }
+
+    // category: data-filter buttons/links + experience dropdown
     document.querySelectorAll('[data-filter]').forEach(function (el) {
       el.addEventListener('click', function (e) {
         if (el.tagName === 'A') e.preventDefault();
-        applyFilter(el.getAttribute('data-filter'));
+        state.cat = el.getAttribute('data-filter');
+        applyAndGo();
       });
     });
     document.querySelectorAll('#menu-panel a').forEach(function (a) {
       a.addEventListener('click', function () { setPanel(false); });
     });
 
-    // keyword search
+    // keyword
     var kw = document.getElementById('kw-search');
     var findBtn = document.getElementById('find-btn');
     var searchBtn = document.getElementById('search-btn');
-    if (kw) kw.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); applySearch(kw.value); } });
-    if (findBtn) findBtn.addEventListener('click', function () { applySearch(kw ? kw.value : ''); });
+    if (kw) kw.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); state.kw = kw.value; applyAndGo(); } });
+    if (findBtn) findBtn.addEventListener('click', function () { state.kw = kw ? kw.value : ''; applyAndGo(); });
     if (searchBtn) searchBtn.addEventListener('click', function () {
       if (!kw) { window.location.href = (window.TIK_BASE || '/') + 'all-tours/'; return; }
       window.scrollTo({ top: 0, behavior: 'smooth' });
       setTimeout(function () { kw.focus(); }, 350);
     });
 
-    // custom neomorphic dropdowns
+    // neomorphic dropdowns: experience -> category, when -> when
     function closeAllSel() {
       document.querySelectorAll('.nsel-list').forEach(function (l) { l.setAttribute('hidden', ''); });
       document.querySelectorAll('.nsel-btn').forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
@@ -80,7 +104,10 @@
           list.querySelectorAll('li').forEach(function (o) { o.removeAttribute('aria-selected'); });
           li.setAttribute('aria-selected', 'true');
           closeAllSel();
-          if (sel.getAttribute('data-name') === 'experience') applyFilter(li.getAttribute('data-val'));
+          var name = sel.getAttribute('data-name');
+          var v = li.getAttribute('data-val');
+          if (name === 'experience') { state.cat = v; applyAndGo(); }
+          else if (name === 'when') { state.when = v; applyAndGo(); }
         });
       });
     });
