@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import TourCard from '../components/TourCard.astro';
-import { Image } from 'astro:assets';
+import { Image, Picture } from 'astro:assets';
 import heroPalms from '../assets/hero-palms.jpg';
 import tours from '../data/tours.json';
 import reviews from '../data/reviews.json';
@@ -185,7 +185,7 @@ const why = [
       <div class="cats">
         {cats.map((c) => (
           <a class="cat-tile" href="#tours" data-filter={c.label}>
-            <Image src={byTk[c.tk]} alt={c.label + ' tours in Koh Samui'} width={520} loading="lazy" decoding="async" />
+            <Picture src={byTk[c.tk]} alt={c.label + ' tours in Koh Samui'} formats={['avif', 'webp']} widths={[160, 240, 360, 520]} sizes="(max-width: 560px) 32vw, (max-width: 920px) 32vw, 360px" loading="lazy" decoding="async" />
             <span>{c.label}</span>
           </a>
         ))}

@@ -1,11 +1,11 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 const { tour, image } = Astro.props;
 const priceFmt = tour.price.toLocaleString('en-US');
 ---
 <article class="card" data-cat={tour.cat}>
   <div class="ph">
-    <Image src={image} alt={tour.alt} width={640} loading="lazy" decoding="async" />
+    <Picture src={image} alt={tour.alt} formats={['avif', 'webp']} widths={[260, 360, 480, 640]} sizes="(max-width: 560px) 90vw, (max-width: 920px) 45vw, 360px" loading="lazy" decoding="async" />
     <span class="cat">{tour.cat}</span>
   </div>
   <div class="body">
