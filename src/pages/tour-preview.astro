@@ -1,0 +1,212 @@
+---
+// PREVIEW / MOCKUP of the reskinned Tour (product) page in the new neomorphic style.
+// Real content (Shopify product TK001 + real Google reviews). The booking form here is a
+// STYLED MOCK only — on the live Shopify theme the real pickers/form stay byte-identical,
+// this page just demonstrates the layout + style + order Will approved.
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import TourCard from '../components/TourCard.astro';
+import data from '../data/tour-preview.json';
+import reviews from '../data/reviews.json';
+import tours from '../data/tours.json';
+
+const files = import.meta.glob('../assets/tours/*.{jpg,png}', { eager: true, import: 'default' });
+const byTk: Record<string, any> = {};
+for (const p in files) { const m = p.match(/(TK\d+)\./); if (m) byTk[m[1]] = files[p]; }
+
+const gallery = data.images.slice(0, 5);
+const moreCount = Math.max(0, data.images.length - 5);
+const related = tours.filter((t) => t.tk !== 'TK001').slice(0, 3);
+
+const accordions = [
+  { t: 'What’s included', html: '<ul><li>Round-trip hotel pickup &amp; drop-off across Koh Samui</li><li>English-speaking guide</li><li>Snorkeling equipment &amp; life jackets</li><li>Kayaking at Koh Tan</li><li>Thai lunch &amp; drinking water</li><li>Insurance &amp; all park fees</li></ul>' },
+  { t: 'What to bring', html: '<ul><li>Swimwear &amp; towel</li><li>Sunscreen (reef-safe) &amp; hat</li><li>A waterproof phone case for photos</li><li>Cash for souvenirs or extra snacks</li></ul>' },
+  { t: 'Good to know', html: '<p>Suitable for all swimming levels. Children are welcome. The order of stops may change with weather and tide for your safety. Hotel pickup time is confirmed the evening before your tour.</p>' },
+  { t: 'Cancellation policy', html: '<p>Free cancellation up to 48 hours before the tour for a full refund. 24–48 hours before: 50% refund. Less than 24 hours or no-show: no refund. Cancel by replying to your booking email or contacting us.</p>' },
+];
+
+const faqs = [
+  { q: 'Does this tour include hotel pickup?', a: 'Yes. Round-trip hotel pickup and drop-off across Koh Samui is included, so you never have to arrange your own transfer.' },
+  { q: 'Can I cancel if my plans change?', a: 'Yes. Free cancellation up to 48 hours before the tour for a full refund, and you can reserve now and pay later.' },
+  { q: 'Is it suitable for children and non-swimmers?', a: 'Absolutely. Life jackets are provided and the snorkeling spots around Koh Tan are calm and shallow, so all ages and swimming levels are welcome.' },
+  { q: 'What is the best time of year for this trip?', a: 'Koh Samui is a year-round destination. The waters around Koh Tan and Pig Island are calmest from roughly January to September.' },
+];
+
+const stars = Math.round(data.rating);
+const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+<Base title={`${data.title} · Tour In Koh Samui`} description="Preview of the reskinned tour page in the new neomorphic style.">
+  <Header />
+  <main id="main" class="tp">
+    <div class="wrap tp-wrap">
+
+      <!-- 1. TITLE + 2. RATING -->
+      <nav class="crumbs" aria-label="Breadcrumb"><a href={import.meta.env.BASE_URL}>Home</a><span aria-hidden="true">/</span><a href={`${import.meta.env.BASE_URL.replace(/\/?$/,'/')}all-tours/`}>Tours</a><span aria-hidden="true">/</span><span>Pig Island</span></nav>
+      <h1 class="tp-title">{data.title}</h1>
+      <div class="tp-rating">
+        <span class="tp-stars" aria-hidden="true">{'★'.repeat(stars)}{'☆'.repeat(5 - stars)}</span>
+        <strong>{data.rating}</strong>
+        <span class="tp-rating-meta">Verified guest reviews · powered by Judge.me</span>
+      </div>
+
+      <!-- 3. SHORT EXPLANATION -->
+      <p class="tp-lead">A value-packed speedboat day trip to Pig Island &amp; Koh Tan: snorkeling over calm reefs, kayaking, beach time with the island&rsquo;s famous pigs and a Thai lunch — hotel pickup included.</p>
+
+      <!-- 4. GALLERY (GetYourGuide-style) -->
+      <section class="tp-gallery" aria-label="Photos">
+        {gallery.map((src, i) => (
+          <div class={`tp-shot tp-shot-${i}`}>
+            <img src={src} alt={`${data.title} photo ${i + 1}`} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />
+            {i === 4 && moreCount > 0 && <span class="tp-more">+{moreCount} photos</span>}
+          </div>
+        ))}
+      </section>
+    </div>
+
+    <div class="wrap tp-grid">
+      <div class="tp-main">
+        <!-- 5. REVIEWS -->
+        <section class="tp-block">
+          <h2>What travellers say</h2>
+          <div class="tp-reviews">
+            {reviews.slice(0, 4).map((r) => (
+              <figure class="tp-review">
+                <div class="tp-review-stars" aria-hidden="true">{'★'.repeat(r.rating)}{'☆'.repeat(5 - r.rating)}</div>
+                <blockquote>{r.text}</blockquote>
+                <figcaption>{r.name}{r.country ? ` · ${r.country}` : ''} <span class="tp-src">Google</span></figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+
+        <!-- 6. LONG DESCRIPTION (just above the accordions) -->
+        <section class="tp-block">
+          <h2>About this tour</h2>
+          <div class="tp-desc" set:html={data.descriptionHtml} />
+        </section>
+
+        <!-- 7. ACCORDIONS (open by default, closeable) -->
+        <section class="tp-block">
+          <h2>Details</h2>
+          {accordions.map((a) => (
+            <details class="tp-acc" open>
+              <summary>{a.t}<svg class="tp-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+              <div class="tp-acc-body" set:html={a.html} />
+            </details>
+          ))}
+        </section>
+      </div>
+
+      <!-- 8. PICKERS / BOOKING FORM (styled mock — live form keeps all functionality) -->
+      <aside class="tp-side">
+        <form class="tp-form" onsubmit="return false">
+          <div class="tp-price"><span class="tp-from">From</span><span class="tp-amount">฿{data.price.toLocaleString('en-US')}</span><span class="tp-per">per adult</span></div>
+          <label class="tp-field"><span>Date</span><button type="button" class="tp-input tp-date">Select your date</button></label>
+          <div class="tp-pax">
+            <div class="tp-prow"><span>Adults</span><span class="tp-step"><button type="button" aria-label="less">−</button><b>2</b><button type="button" aria-label="more">+</button></span></div>
+            <div class="tp-prow"><span>Children</span><span class="tp-step"><button type="button" aria-label="less">−</button><b>0</b><button type="button" aria-label="more">+</button></span></div>
+            <div class="tp-prow"><span>Infants</span><span class="tp-step"><button type="button" aria-label="less">−</button><b>0</b><button type="button" aria-label="more">+</button></span></div>
+          </div>
+          <label class="tp-field"><span>Hotel pickup</span><button type="button" class="tp-input">Choose pickup location</button></label>
+          <label class="tp-field"><span>Full name</span><input class="tp-input" type="text" placeholder="Your name" /></label>
+          <label class="tp-field"><span>WhatsApp</span><input class="tp-input" type="tel" placeholder="+66 ..." /></label>
+          <button type="button" class="btn btn-primary btn-block tp-book">Book now · ฿2,700</button>
+          <p class="tp-reassure">Free cancellation up to 48h · Reserve now, pay later</p>
+        </form>
+      </aside>
+    </div>
+
+    <div class="wrap tp-wrap">
+      <!-- 9. FAQs (OPEN, below the form — for AEO) -->
+      <section class="tp-block tp-faqs">
+        <h2>Frequently asked questions</h2>
+        {faqs.map((f) => (
+          <details class="tp-acc" open>
+            <summary>{f.q}<svg class="tp-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+            <div class="tp-acc-body"><p>{f.a}</p></div>
+          </details>
+        ))}
+      </section>
+
+      <!-- 10. YOU MAY ALSO LIKE -->
+      <section class="tp-block">
+        <h2>You may also like</h2>
+        <div class="grid-tours">
+          {related.map((t) => <TourCard tour={t} image={byTk[t.tk]} />)}
+        </div>
+      </section>
+    </div>
+  </main>
+  <Footer />
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+
+  <style>
+    .tp-wrap { max-width: 1100px; }
+    .crumbs { display:flex; gap:8px; align-items:center; font-size:.82rem; font-weight:600; color:var(--ink-soft); margin: 6px 0 14px; }
+    .crumbs a:hover { color: var(--ink); } .crumbs span[aria-hidden]{ opacity:.5; }
+    .tp-title { font-size: clamp(1.8rem, 3.6vw, 2.7rem); margin-bottom: 12px; }
+    .tp-rating { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom: 14px; }
+    .tp-stars { color: var(--sun); font-size: 1.15rem; letter-spacing: 2px; }
+    .tp-rating strong { font-size: 1.05rem; }
+    .tp-rating-meta { color: var(--ink-soft); font-size:.86rem; font-weight:600; }
+    .tp-lead { font-size: clamp(1.02rem, 1.6vw, 1.18rem); color: var(--ink-soft); max-width: 70ch; margin-bottom: 22px; }
+
+    /* gallery */
+    .tp-gallery { display:grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap:10px; height: clamp(280px, 42vw, 460px); margin-bottom: 8px; }
+    .tp-shot { position:relative; border-radius: var(--r); overflow:hidden; box-shadow: var(--nm-sm); background: var(--sh-dark); }
+    .tp-shot img { width:100%; height:100%; object-fit:cover; display:block; }
+    .tp-shot-0 { grid-row: 1 / 3; border-radius: var(--r-lg); }
+    .tp-more { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background: rgba(8,14,22,.5); color:#fff; font-weight:700; font-size:.95rem; backdrop-filter: blur(2px); }
+    @media (max-width: 640px) { .tp-gallery { grid-template-columns: 1fr 1fr; height: auto; } .tp-shot-0 { grid-row: auto; grid-column: 1 / 3; aspect-ratio: 16/10; } .tp-shot { aspect-ratio: 1/1; } }
+
+    /* two-column body + sticky form */
+    .tp-grid { display:grid; grid-template-columns: 1fr 380px; gap: clamp(24px, 4vw, 48px); align-items:start; margin-top: 30px; }
+    @media (max-width: 900px) { .tp-grid { grid-template-columns: 1fr; } }
+    .tp-block { margin-bottom: 40px; }
+    .tp-block h2 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); margin-bottom: 16px; }
+
+    /* reviews */
+    .tp-reviews { display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
+    @media (max-width:560px){ .tp-reviews { grid-template-columns:1fr; } }
+    .tp-review { background: var(--bg); border-radius: var(--r); box-shadow: var(--nm-sm); padding: 16px; margin:0; }
+    .tp-review-stars { color: var(--sun); font-size:.9rem; letter-spacing:1px; margin-bottom:8px; }
+    .tp-review blockquote { margin:0 0 10px; font-size:.94rem; line-height:1.55; }
+    .tp-review figcaption { font-size:.82rem; font-weight:700; color: var(--ink-soft); }
+    .tp-src { background: var(--bg); box-shadow: var(--nm-in-sm); border-radius: var(--pill); padding:.1em .6em; font-size:.7rem; margin-left:6px; }
+
+    /* long description prose */
+    .tp-desc { color: var(--ink-soft); line-height:1.7; max-width: 72ch; }
+    .tp-desc :global(h2), .tp-desc :global(h3) { color: var(--ink); margin: 22px 0 8px; font-size: 1.15rem; }
+    .tp-desc :global(p) { margin-bottom: 12px; }
+    .tp-desc :global(ul) { margin: 0 0 12px 1.1em; } .tp-desc :global(li){ margin-bottom:5px; }
+    .tp-desc :global(a){ color: var(--brand-deep); text-decoration: underline; }
+
+    /* accordions (native details = open by default, closeable, AEO-readable) */
+    .tp-acc { background: var(--bg); border-radius: var(--r); box-shadow: var(--nm-sm); margin-bottom: 12px; overflow:hidden; }
+    .tp-acc summary { cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:12px; padding: 16px 18px; font-weight:700; font-family: var(--font-sans); }
+    .tp-acc summary::-webkit-details-marker { display:none; }
+    .tp-chev { transition: transform .2s ease; flex:none; color: var(--brand-deep); }
+    .tp-acc[open] .tp-chev { transform: rotate(180deg); }
+    .tp-acc-body { padding: 0 18px 18px; color: var(--ink-soft); line-height:1.6; }
+    .tp-acc-body :global(ul){ margin:0 0 0 1.1em; } .tp-acc-body :global(li){ margin-bottom:6px; }
+
+    /* booking form (styled mock) */
+    .tp-side { position: sticky; top: 90px; }
+    .tp-form { background: var(--bg); border-radius: var(--r-lg); box-shadow: var(--nm-lg); padding: 22px; display:flex; flex-direction:column; gap:14px; }
+    .tp-price { display:flex; align-items:baseline; gap:8px; }
+    .tp-from { color: var(--ink-soft); font-size:.82rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; }
+    .tp-amount { font-family: var(--font-display); font-size: 1.9rem; font-weight:600; background: var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+    .tp-per { color: var(--ink-soft); font-size:.82rem; }
+    .tp-field { display:flex; flex-direction:column; gap:5px; font-size:.82rem; font-weight:700; color: var(--ink-soft); }
+    .tp-input { background: var(--bg); box-shadow: var(--nm-in-sm); border-radius: 12px; padding: .8em 1em; font: inherit; color: var(--ink); text-align:left; width:100%; }
+    .tp-date { color: var(--ink-soft); }
+    .tp-pax { display:flex; flex-direction:column; gap:10px; padding: 4px 0; }
+    .tp-prow { display:flex; justify-content:space-between; align-items:center; font-weight:700; font-size:.92rem; }
+    .tp-step { display:inline-flex; align-items:center; gap:14px; }
+    .tp-step button { width:30px; height:30px; border-radius:50%; background: var(--bg); box-shadow: var(--nm-sm); font-size:1.1rem; font-weight:700; color: var(--brand-deep); }
+    .tp-step button:active { box-shadow: var(--nm-in-sm); }
+    .tp-book { margin-top: 6px; }
+    .tp-reassure { text-align:center; font-size:.8rem; color: var(--ink-soft); font-weight:600; }
+  </style>
+</Base>
