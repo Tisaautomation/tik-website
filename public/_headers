@@ -1,0 +1,8 @@
+# Allow the Shopify theme (tourinkohsamui.com) to load the Astro CSS, JS, fonts and
+# images cross-origin so the Shopify home renders byte-identical to the Astro site.
+/_astro/*
+  Access-Control-Allow-Origin: *
+/*.js
+  Access-Control-Allow-Origin: *
+/*.png
+  Access-Control-Allow-Origin: *

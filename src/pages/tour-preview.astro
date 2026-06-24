@@ -17,6 +17,12 @@ for (const p in files) { const m = p.match(/(TK\d+)\./); if (m) byTk[m[1]] = fil
 
 const gallery = data.images.slice(0, 5);
 const moreCount = Math.max(0, data.images.length - 5);
+// Shopify CDN resizes on the fly via &width=. Build a responsive srcset off each
+// (already ?v=-stamped) URL so the gallery ships sized ~80KB images instead of
+// full-res originals — this is what was dragging the tour-page LCP to ~4.5s.
+// preconnect to cdn.shopify.com already lives in <head> (Base.astro).
+const sized = (src: string, w: number) => `${src}&width=${w}`;
+const srcset = (src: string) => [400, 600, 800, 1200].map((w) => `${sized(src, w)} ${w}w`).join(', ');
 const related = tours.filter((t) => t.tk !== 'TK001').slice(0, 3);
 
 const accordions = [
@@ -57,7 +63,15 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity
       <section class="tp-gallery" aria-label="Photos">
         {gallery.map((src, i) => (
           <div class={`tp-shot tp-shot-${i}`}>
-            <img src={src} alt={`${data.title} photo ${i + 1}`} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />
+            <img
+              src={sized(src, i === 0 ? 900 : 500)}
+              srcset={srcset(src)}
+              sizes={i === 0 ? '(max-width: 640px) 100vw, 60vw' : '(max-width: 640px) 50vw, 22vw'}
+              width="1200" height="800"
+              alt={`${data.title} photo ${i + 1}`}
+              loading={i === 0 ? 'eager' : 'lazy'}
+              fetchpriority={i === 0 ? 'high' : null}
+              decoding="async" />
             {i === 4 && moreCount > 0 && <span class="tp-more">+{moreCount} photos</span>}
           </div>
         ))}
@@ -196,7 +210,8 @@ const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity
     .tp-form { background: var(--bg); border-radius: var(--r-lg); box-shadow: var(--nm-lg); padding: 22px; display:flex; flex-direction:column; gap:14px; }
     .tp-price { display:flex; align-items:baseline; gap:8px; }
     .tp-from { color: var(--ink-soft); font-size:.82rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; }
-    .tp-amount { font-family: var(--font-display); font-size: 1.9rem; font-weight:600; background: var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+    /* solid dark ink — the gradient-clipped price was illegible on the light bg (turquoise end ~invisible). Matches the card price colour. */
+    .tp-amount { font-family: var(--font-display); font-size: 1.9rem; font-weight:700; color: var(--ink); }
     .tp-per { color: var(--ink-soft); font-size:.82rem; }
     .tp-field { display:flex; flex-direction:column; gap:5px; font-size:.82rem; font-weight:700; color: var(--ink-soft); }
     .tp-input { background: var(--bg); box-shadow: var(--nm-in-sm); border-radius: 12px; padding: .8em 1em; font: inherit; color: var(--ink); text-align:left; width:100%; }
