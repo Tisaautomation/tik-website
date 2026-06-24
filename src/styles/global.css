@@ -137,7 +137,7 @@ section { padding-block: clamp(56px, 9vw, 104px); }
 .hero-copy .serif-accent { background: linear-gradient(100deg, #0fa9ee 0%, #6a5cf0 46%, #e21bd6 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; text-shadow: none; filter: drop-shadow(0 1px 5px color-mix(in srgb, #0a1526 32%, transparent)); }
 .hero .search { max-width: 720px; margin-inline: auto; text-align: left; }
 .hero-trust { justify-content: center; }
-.hero-trust { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 24px; color: var(--ink-soft); font-size: .92rem; font-weight: 600; }
+.hero-trust { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 24px; color: var(--ink); font-size: .92rem; font-weight: 700; }
 .hero-trust span { display: inline-flex; align-items: center; gap: .45em; }
 .hero-media { position: relative; }
 .hero-media .frame { border-radius: var(--r-lg); padding: 12px; background: var(--bg); box-shadow: var(--nm-lg); }
@@ -233,6 +233,8 @@ section { padding-block: clamp(56px, 9vw, 104px); }
 .review .who small { display: block; color: var(--ink-soft); font-weight: 600; }
 
 /* social-proof: flat full-width rating bar (palms photo now lives behind the hero), then review cards */
+/* pull the reviews bar up — kill the dead space between the hero and the proof block */
+#reviews.proof { padding-block: clamp(4px, 1vw, 14px) clamp(38px, 6vw, 72px); }
 .proof-hero { border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--nm); margin-bottom: clamp(28px, 4vw, 46px); background: var(--bg); }
 /* flat full-width rating bar — spans the photo width */
 .rating-bar { display: flex; align-items: center; justify-content: space-between; gap: 14px 24px; flex-wrap: wrap; padding: 14px clamp(16px, 2.4vw, 26px); background: var(--bg); }

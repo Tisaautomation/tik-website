@@ -1,8 +1,16 @@
 # Allow the Shopify theme (tourinkohsamui.com) to load the Astro CSS, JS, fonts and
 # images cross-origin so the Shopify home renders byte-identical to the Astro site.
+# Cache-Control: hashed _astro assets + fonts are immutable (1y); fixes Lighthouse
+# "efficient cache lifetimes" and makes repeat loads instant.
 /_astro/*
   Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000, immutable
+/fonts/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000, immutable
 /*.js
   Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
 /*.png
   Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=86400
