@@ -100,7 +100,7 @@
     function addMsg(text, type) {
       if (!text) return;
       var c = document.getElementById('tik-msgs'); var d = document.createElement('div');
-      d.className = 'tik-m ' + type; d.innerHTML = linkify(text); c.appendChild(d); c.scrollTop = c.scrollHeight;
+      d.className = 'tik-m ' + type; d.innerHTML = linkify(text).replace(/\[\[TALK_TO_PERSON\]\]/g, '<a href="https://wa.me/66613058528" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;margin-top:10px;padding:11px 18px;background:linear-gradient(135deg,#0CC0DF,#7c3aed);color:#fff;border-radius:24px;text-decoration:none;font-weight:700;font-size:14px;box-shadow:0 2px 6px rgba(0,0,0,.15);">Talk to a person</a>'); c.appendChild(d); c.scrollTop = c.scrollHeight;
     }
     function showTyping() { if (document.getElementById('tik-typing')) return; var c = document.getElementById('tik-msgs'); var d = document.createElement('div'); d.className = 'tik-typ'; d.id = 'tik-typing'; d.innerHTML = '<span></span><span></span><span></span>'; c.appendChild(d); c.scrollTop = c.scrollHeight; }
     function hideTyping() { var e = document.getElementById('tik-typing'); if (e) e.remove(); }
