@@ -35,11 +35,11 @@
   var HTML = '' +
 '<div id="tik-btn-wrap"><div id="tik-label">Chat with us</div>' +
 '<button id="tik-btn" aria-label="Open chat" aria-expanded="false" aria-controls="tik-win">' +
-'<img src="/chat-avatar.png" alt="Chat with Tour In Koh Samui" width="80" height="80" loading="lazy" decoding="async"></button></div>' +
+'<img src="https://tik-website.pages.dev/chat-avatar.png" alt="Chat with Tour In Koh Samui" width="80" height="80" loading="lazy" decoding="async"></button></div>' +
 '<div id="tik-win"><div id="tik-head">' +
 '<img id="tik-av" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="">' +
 '<div id="tik-info"><div id="tik-name">...</div><div id="tik-status">Online</div></div>' +
-'<img id="tik-logo" src="" data-src="/chat-logo.png" alt="" loading="lazy">' +
+'<img id="tik-logo" src="" data-src="https://tik-website.pages.dev/chat-logo.png" alt="" loading="lazy">' +
 '<button id="tik-close" aria-label="Close chat">&times;</button></div>' +
 '<div id="tik-msgs"></div>' +
 '<div id="tik-inp-area"><input id="tik-inp" placeholder="Type a message..."><button id="tik-send" aria-label="Send message">' +
@@ -84,7 +84,7 @@
       fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: '__init__', sessionId: sid }) })
         .then(function (r) { return r.json(); })
         .then(function (d) {
-          if (d.avatar) { var av = document.getElementById('tik-av'); av.onload = function () { av.style.opacity = '1'; }; av.src = d.avatar.img; document.getElementById('tik-name').textContent = d.avatar.name; }
+          if (d.avatar) { var av = document.getElementById('tik-av'); var fb = 'https://tik-website.pages.dev/chat-avatar.png'; av.onload = function () { av.style.opacity = '1'; }; av.onerror = function () { av.onerror = null; av.src = fb; }; av.src = d.avatar.img || fb; document.getElementById('tik-name').textContent = d.avatar.name || 'Tour In Koh Samui'; }
           if (d.conversationId) { convId = d.conversationId; subscribe(convId); }
           greetTimer = setTimeout(function () { if (!customerTypedFirst) addMsg('Hey! Looking for a tour? Happy to help.', 'bot'); }, 4000);
         }).catch(function () {});

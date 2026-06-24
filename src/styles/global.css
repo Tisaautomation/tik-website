@@ -162,9 +162,12 @@ section { padding-block: clamp(56px, 9vw, 104px); }
   .search-controls { grid-template-columns: 1fr 1fr; }
   .search-controls .btn { grid-column: 1 / -1; }
   .hero { padding-block: 14px 22px; }
-  .hero-copy h1 { font-size: clamp(1.65rem, 7.2vw, 2.2rem); line-height: 1.12; margin: 10px 0 16px; }
-  .hero-copy .lead { font-size: .96rem; margin-bottom: 18px; }
-  .hero-trust { margin-top: 16px; gap: 8px 14px; font-size: .82rem; }
+  /* mobile: bigger headline + accent; move the small lead BELOW the search (Will) */
+  .hero-copy { display: flex; flex-direction: column; }
+  .hero-copy h1 { order: 1; font-size: clamp(2.15rem, 10vw, 3rem); line-height: 1.08; margin: 6px 0 14px; }
+  .hero .search { order: 2; }
+  .hero-copy .lead { order: 3; font-size: 1rem; margin: 16px auto 6px; }
+  .hero-trust { order: 4; margin-top: 14px; gap: 8px 14px; font-size: .82rem; }
   /* keep the dropdown value on one line so the two pickers stay even */
   .nsel { padding: 9px 12px; }
   .nsel-btn { font-size: .94rem; }
