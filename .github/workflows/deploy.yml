@@ -3,7 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-  workflow_dispatch:
+  workflow_dispatch:        # manual rebuild from the Actions tab / API
+  repository_dispatch:      # external trigger (e.g. Shopify product activated -> rebuild)
+    types: [shopify-product-update]
 
 permissions:
   contents: read
