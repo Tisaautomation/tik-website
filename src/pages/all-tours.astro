@@ -77,7 +77,7 @@ const breadcrumb = {
   </section>
 
   <!-- TOURS GRID -->
-  <section class="tours-list" style="padding-top:0">
+  <section id="tours" class="tours-list" style="padding-top:0">
     <div class="wrap">
       <h2 class="sr-only">All Koh Samui tours and experiences</h2>
       <div class="grid-tours">
@@ -113,8 +113,10 @@ const breadcrumb = {
         pills.forEach(function (p) { p.addEventListener('click', function () { setActive(p); setTimeout(syncNote, 0); }); });
         var kw = document.getElementById('kw-search');
         var find = document.getElementById('find-btn');
-        if (kw) kw.addEventListener('keydown', function (e) { if (e.key === 'Enter') { setActive(null); setTimeout(syncNote, 0); } });
-        if (find) find.addEventListener('click', function () { setActive(null); setTimeout(syncNote, 0); });
+        var allPill = document.querySelector('.fbar .fpill[data-filter="all"]');
+        // A keyword search spans every category, so highlight the "All tours" pill.
+        if (kw) kw.addEventListener('keydown', function (e) { if (e.key === 'Enter') { setActive(allPill); setTimeout(syncNote, 0); } });
+        if (find) find.addEventListener('click', function () { setActive(allPill); setTimeout(syncNote, 0); });
         document.querySelectorAll('.no-match [data-filter]').forEach(function (b) {
           b.addEventListener('click', function () { var all = document.querySelector('.fbar .fpill[data-filter="all"]'); setActive(all); if (kw) kw.value = ''; setTimeout(syncNote, 0); });
         });
@@ -123,6 +125,8 @@ const breadcrumb = {
   </script>
 
   <style>
+    /* After a search/filter, ui.js scrolls #tours into view; offset for the sticky header. */
+    #tours { scroll-margin-top: 86px; }
     .page-hero { padding-block: clamp(26px, 4vw, 52px) clamp(20px, 3vw, 34px); }
     .crumbs { display: flex; gap: 8px; align-items: center; font-size: .82rem; font-weight: 600; color: var(--ink-soft); margin-bottom: 16px; }
     .crumbs a:hover { color: var(--ink); }

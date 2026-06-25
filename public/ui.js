@@ -25,6 +25,10 @@
     // ---------- unified filter ----------
     var state = { cat: 'all', when: 'Anytime', kw: '' };
     var cards = [].slice.call(document.querySelectorAll('.card[data-cat]'));
+    // On the All Tours page the keyword search and the category pills are SEPARATE,
+    // authoritative controls (not the home's combine-experience-then-find funnel):
+    // a keyword search spans every category, and picking a category clears the keyword.
+    var hasPills = !!document.querySelector('.fbar .fpill');
 
     function nums(s) { return (s || '').split(',').map(function (x) { return parseInt(x, 10); }).filter(function (x) { return !isNaN(x); }); }
     function dateOk(card, d) {
@@ -63,6 +67,7 @@
       el.addEventListener('click', function (e) {
         if (el.tagName === 'A') e.preventDefault();
         state.cat = el.getAttribute('data-filter');
+        if (hasPills) { state.kw = ''; if (kw) kw.value = ''; } // picking a category clears the keyword (All Tours)
         applyAndGo();
       });
     });
@@ -74,8 +79,8 @@
     var kw = document.getElementById('kw-search');
     var findBtn = document.getElementById('find-btn');
     var searchBtn = document.getElementById('search-btn');
-    if (kw) kw.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); state.kw = kw.value; applyAndGo(); } });
-    if (findBtn) findBtn.addEventListener('click', function () { state.kw = kw ? kw.value : ''; applyAndGo(); });
+    if (kw) kw.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); state.kw = kw.value; if (hasPills) state.cat = 'all'; applyAndGo(); } });
+    if (findBtn) findBtn.addEventListener('click', function () { state.kw = kw ? kw.value : ''; if (hasPills) state.cat = 'all'; applyAndGo(); });
     if (searchBtn) searchBtn.addEventListener('click', function () {
       if (!kw) { window.location.href = (window.TIK_BASE || '/') + 'all-tours/'; return; }
       window.scrollTo({ top: 0, behavior: 'smooth' });
